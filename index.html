@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+      <li>Overview</li>
+      <li>Analytics</li>
+      <li>Sales</li>
+      <li>Users</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <header>
+      <h1>Welcome, Admin</h1>
+    </header>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Sales</h3>
+        <p>$25,300</p>
+      </div>
+      <div class="card">
+        <h3>Active Users</h3>
+        <p>1,203</p>
+      </div>
+      <div class="card">
+        <h3>Orders</h3>
+        <p>530</p>
+      </div>
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>$7,800</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="salesChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Sales ($)',
+          data: [1200, 1900, 3000, 2500, 3100, 4000],
+          borderColor: '#ff5722',
+          backgroundColor: 'rgba(255, 87, 34, 0.1)',
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
